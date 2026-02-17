@@ -1,41 +1,40 @@
 #include <stdio.h>
+#include <math.h>
 
 int main() {
-    float num1, num2;
-    char op;
+    float a, b, c;
+    float d, root1, root2, real, imag;
 
-    printf("Simple Calculator\n");
-    printf("Enter first number: ");
-    scanf("%f", &num1);
+    printf("Enter coefficients a, b and c: ");
+    scanf("%f %f %f", &a, &b, &c);
 
-    printf("Enter operator (+, -, *, /): ");
-    scanf(" %c", &op);
+    // Discriminant
+    d = b*b - 4*a*c;
 
-    printf("Enter second number: ");
-    scanf("%f", &num2);
+    if (d > 0) {
+        // Real and different roots
+        root1 = (-b + sqrt(d)) / (2*a);
+        root2 = (-b - sqrt(d)) / (2*a);
 
-    switch(op) {
-        case '+':
-            printf("Result = %.2f", num1 + num2);
-            break;
+        printf("Roots are real and different\n");
+        printf("Root1 = %.2f\n", root1);
+        printf("Root2 = %.2f\n", root2);
+    }
+    else if (d == 0) {
+        // Real and equal roots
+        root1 = -b / (2*a);
 
-        case '-':
-            printf("Result = %.2f", num1 - num2);
-            break;
+        printf("Roots are real and equal\n");
+        printf("Root1 = Root2 = %.2f\n", root1);
+    }
+    else {
+        // Complex roots
+        real = -b / (2*a);
+        imag = sqrt(-d) / (2*a);
 
-        case '*':
-            printf("Result = %.2f", num1 * num2);
-            break;
-
-        case '/':
-            if(num2 != 0)
-                printf("Result = %.2f", num1 / num2);
-            else
-                printf("Error! Division by zero.");
-            break;
-
-        default:
-            printf("Invalid operator");
+        printf("Roots are complex and imaginary\n");
+        printf("Root1 = %.2f + %.2fi\n", real, imag);
+        printf("Root2 = %.2f - %.2fi\n", real, imag);
     }
 
     return 0;
