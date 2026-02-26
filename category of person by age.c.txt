@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int age;
+    printf("Enter the age: ");
+    if (scanf("%d", &age) != 1) {
+        printf("Invalid input. Please enter a number.\n");
+        return 1;
+    }
+    if (age < 0)
+    {
+        printf("Age not defined.\n");
+    } else if (age <= 12)
+    {
+        printf("Category: Child\n");
+    } else if (age >= 13 && age <= 17) 
+    {
+        printf("Category: Teen\n");
+    } else if (age >= 18 && age <= 60) 
+    {
+        printf("Category: Adult\n");
+    } else
+    {
+        printf("Category: Senior Citizen\n");
+    }
+
+    return 0;
+}
